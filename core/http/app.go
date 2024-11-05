@@ -89,7 +89,7 @@ func App(cl *config.BackendConfigLoader, ml *model.ModelLoader, appConfig *confi
 
 	app := fiber.New(fiberCfg)
 
-	app.Use(func(c *fiber.Ctx) error {
+	app.Use("/v1/realtime", func(c *fiber.Ctx) error {
 		if websocket.IsWebSocketUpgrade(c) {
 			// Returns true if the client requested upgrade to the WebSocket protocol
 			return c.Next()
